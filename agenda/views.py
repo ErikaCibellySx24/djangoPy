@@ -9,7 +9,7 @@ def main(request):
 
 def listar_contatos(request):
     contatos = Contato.objects.all()
-    return render(request, 'agenda/listar_contatos.html', {'contatos': contatos})
+    return render(request, 'listar_contatos.html', {'contatos': contatos})
 
 def adicionar_contato(request):
     if request.method == 'POST':
@@ -17,7 +17,7 @@ def adicionar_contato(request):
         numero = request.POST.get('numero')
         Contato.objects.create(nome=nome, numero=numero)
         return redirect('listar_contatos')
-    return render(request, 'agenda/adicionar_contato.html')
+    return render(request, 'adicionar_contato.html')
 
 def editar_contato(request, nome):
     contato = Contato.objects.get(nome=nome)
@@ -26,7 +26,7 @@ def editar_contato(request, nome):
         contato.numero = novo_numero
         contato.save()
         return redirect('listar_contatos')
-    return render(request, 'agenda/editar_contato.html', {'contato': contato})
+    return render(request, 'editar_contato.html', {'contato': contato})
 
 def excluir_contato(request, nome):
     Contato.objects.filter(nome=nome).delete()

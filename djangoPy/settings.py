@@ -77,10 +77,20 @@ WSGI_APPLICATION = 'djangoPy.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'ENFORCE_SCHEMA': False,
+        'NAME': '<database_name>',
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            'host': 'cluster0.mongodb.net',
+            'username': 'erikacibelly034',
+            'password': 'uISdK1in7NbTG4Pi',
+            'authSource': 'admin',
+            'authMechanism': 'SCRAM-SHA-1',
+        }
     }
 }
+
 
 
 # Password validation
